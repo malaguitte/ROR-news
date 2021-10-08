@@ -1,24 +1,44 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[ROR-news](https://github.com/malagutti/ROR-news)
 
-Things you may want to cover:
+## Install
 
-* Ruby version
+### Clone the repository
 
-* System dependencies
+```shell
+$ git clone git@github.com:malagutti/ROR-news.git
+$ cd ROR-news
+```
 
-* Configuration
+### Check your Ruby version locally
 
-* Database creation
+```shell
+ruby -v
+```
 
-* Database initialization
+The ouput should start with something like `ruby 2.6.3`
 
-* How to run the test suite
+If not, please install Ruby in your machine, more info here: [ruby-lang.org - installation](https://www.ruby-lang.org/en/documentation/installation/)
 
-* Services (job queues, cache servers, search engines, etc.)
+### Install dependencies
 
-* Deployment instructions
+Using [Bundler](https://github.com/bundler/bundler) and [Yarn](https://github.com/yarnpkg/yarn):
 
-* ...
+```shell
+$ bundle
+$ yarn
+```
+
+### Initialize the database
+
+```shell
+$ rails db:create db:migrate db:seed
+```
+
+## Start the project locally
+
+```shell
+$ cd ROR-news
+$ rails server
+```
