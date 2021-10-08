@@ -12,14 +12,16 @@ class UsersController < ApplicationController
     @user = User.new(user_params);
     if @user.save
       p @user.errors.count
-      redirect_to @user, alert: "User created successfully.";
+      flash.alert = "User created successfully.";
+      redirect_to @user;
     else 
-      redirect_to new_user_path, alert: "Error creating new user";
+      flash.alert = "Error creating new user";
+      redirect_to new_user_path;
     end
   end
 
   def user_params
-    params.require(:user).permit(:username, :password, :salt, :encrypted_password);
+    params.require(:user).permit(:username, :email, :password, :salt, :encrypted_password);
   end
 
   def show

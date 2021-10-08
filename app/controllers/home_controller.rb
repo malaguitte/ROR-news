@@ -21,11 +21,21 @@ class HomeController < ApplicationController
         # Tries to authenticate the user with the password received
         is_login_successfull = user.authenticate(params["password"]);
         if is_login_successfull
-          session[:user_id] = user.id
-          redirect_to root_path
+          session[:user_id] = user.id;
+          redirect_to root_path;
+        else
+          fail_login
         end
+      else
+        fail_login
       end
     end
+  end
+
+  def fail_login
+    # flash alert so we can keep the alert for the next view after the redirect
+    flash.alert = "Username or password incorrect!";
+    redirect_to "/home/login";
   end
 
   def logout
