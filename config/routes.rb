@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # home
   get "home/index"
   get "home/login"
+  get "home/logout"
   post "home/login"
   post "home/index"
   # home page

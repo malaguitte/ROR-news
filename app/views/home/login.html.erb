@@ -1,5 +1,5 @@
 <h1>Login</h1>
-<%= @isLoginSuccessful ? "Valid login" : "Login failed" %>
+<%= @is_login_successfull ? "Valid login" : "Login failed" %>
 <form action="/home/login" method="POST">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <input type="text" name="username" placeholder="username" />

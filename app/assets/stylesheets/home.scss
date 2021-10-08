@@ -7,9 +7,25 @@
   flex-wrap: wrap;
   background-color: rgb(241,241,241);
   
-  h1 {
+  h1, h2.login, form {
     flex: 0 0 100%;
     text-align: center;
+  }
+
+  form {
+    .input {
+      border-radius: 5px;
+    }
+  }
+
+  button {
+    border-radius: 10px;
+    background-color: cadetblue;
+    color: white;
+    &:hover {
+      background-color: gray;
+      color: black;
+    }
   }
 
   .article {
