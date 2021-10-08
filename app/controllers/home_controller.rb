@@ -7,17 +7,20 @@ class HomeController < ApplicationController
     if query
       @articles = helpers.get_articles(query);
     end
+    # Caches the result here, so we can use it within the view file
+    # It avoids doing many searches in our database
+    @is_user_logged_in = is_user_logged_in?
   end
 
   def login
-    @is_login_successfull = false;
+    is_login_successfull = false;
     username_received = params["username"];
     if username_received
       user = User.find_by_username(username_received)
       if user != nil
         # Tries to authenticate the user with the password received
-        @is_login_successfull = user.authenticate(params["password"]);
-        if @is_login_successfull
+        is_login_successfull = user.authenticate(params["password"]);
+        if is_login_successfull
           session[:user_id] = user.id
           redirect_to root_path
         end

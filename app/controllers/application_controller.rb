@@ -4,15 +4,15 @@ class ApplicationController < ActionController::Base
 
   # redirects the user if not logged in
   before_action :authorized
-  helper_method :current_user
+  helper_method :get_current_user
   helper_method :is_user_logged_in?
 
-  def current_user
-    User.find_by_id(session[:user_id])
+  def get_current_user
+    return User.find_by_id(session[:user_id])
   end
 
   def is_user_logged_in?
-    return current_user != nil
+    return get_current_user != nil
   end
 
   def authorized
