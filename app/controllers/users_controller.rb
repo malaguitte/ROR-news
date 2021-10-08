@@ -11,12 +11,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params);
     if @user.save
-      p @user.errors.count
       flash.alert = "User created successfully.";
       redirect_to @user;
     else 
       flash.alert = "Error creating new user";
-      redirect_to new_user_path;
+      redirect_to new_user_path, alert: @user.errors.full_messages;
     end
   end
 
