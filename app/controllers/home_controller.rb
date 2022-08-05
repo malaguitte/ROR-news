@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     @articles = helpers.fetch_articles(query: query) if query.present?
     # Caches the result here, so we can use it within the view file
     # It avoids doing many searches in our database
-    @is_user_logged_in = user_logged_in?
+    @user_logged_in = user_logged_in?
   end
 
   def login

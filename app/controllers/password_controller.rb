@@ -15,22 +15,28 @@ class PasswordController < ApplicationController
 
   def forgot
     email_received = params['email']
-    if email_received
-      user = User.find_by_email(email_received)
-      if user
-        # Generate a 15 digit secure token
-        token = SecureRandom.hex(15)
-        # Assign it to the user & saves the record.
-        user.reset = token
-        user.save
-        ResetMailer.with(user: user).reset_password.deliver_now
-      end
-      render plain: 'A link to reset the password has been sent to your email if it exists'
-    end
+    return post_reset_page unless email_received
+
+    user = User.find_by_email(email_received)
+    return post_reset_page unless user
+
+    # Generate a 15 digit secure token
+    token = SecureRandom.hex(15)
+    # Assign it to the user & saves the record.
+    user.reset = token
+    user.save
+    ResetMailer.with(user: user).reset_password.deliver_now
+
+    post_reset_page
   end
 
   def not_found
     raise ActionController::RoutingError.new('Not Found')
+  end
+
+  private
+  def post_reset_page
+    render plain: 'A link to reset the password has been sent to your email if it exists'
   end
 
 end
