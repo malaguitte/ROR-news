@@ -1,13 +1,13 @@
 # README
 
-[ROR-news](https://github.com/malagutti/ROR-news)
+[ROR-news](https://github.com/malaguitte/ROR-news)
 
 ## Install
 
 ### Clone the repository
 
 ```shell
-$ git clone git@github.com:malagutti/ROR-news.git
+$ git clone git@github.com:malaguitte/ROR-news.git
 $ cd ROR-news
 ```
 
@@ -17,7 +17,7 @@ $ cd ROR-news
 ruby -v
 ```
 
-The ouput should start with something like `ruby 2.6.3`
+The output should start with something like `ruby 2.6.3`
 
 If not, please install Ruby in your machine, more info here: [ruby-lang.org - installation](https://www.ruby-lang.org/en/documentation/installation/)
 
