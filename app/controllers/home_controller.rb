@@ -12,17 +12,17 @@ class HomeController < ApplicationController
 
   def login
     username_received = params['username']
-    fail_login unless username_received
+    if username_received
+      user = User.find_by_username(username_received)
+      return fail_login unless user.present?
 
-    user = User.find_by_username(username_received)
-    fail_login unless user.present?
+      # Tries to authenticate the user with the password received
+      login_ok = user.authenticate(params['password'])
+      return fail_login unless login_ok
 
-    # Tries to authenticate the user with the password received
-    success = user.authenticate(params['password'])
-    fail_login unless success
-
-    session[:user_id] = user.id
-    redirect_to root_path
+      session[:user_id] = user.id
+      redirect_to root_path
+    end
   end
 
   def fail_login
